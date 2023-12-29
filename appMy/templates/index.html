@@ -218,7 +218,9 @@
           <h2>Blog Yazıları</h2>
           <hr />
 
-          {% comment %} {% %} template method {{ }} template değişkenleri
+          {% comment %} 
+          {% %} template method 
+          {{ }} template değişkenleri
           {% endcomment %} 
           
           {% for i in blog_list %}
@@ -226,21 +228,25 @@
             <div class="card mb-3" style="height: 200px">
               <div class="row g-0 h-100">
                 <div class="col-md-4 h-100">
-                  <img
-                    src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
-                    alt="Trendy Pants and Shoes"
-                    class="img-fluid rounded-start w-100 h-100"
-                    style="object-fit: cover"
-                  />
+                  <a href="/blog/{{ i.id }}">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                      alt="Trendy Pants and Shoes"
+                      class="img-fluid rounded-start w-100 h-100"
+                      style="object-fit: cover"
+                    />
+                  </a>
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">{{ i.id }}  {{i.title}}</h5>
-                    <p class="card-text">
-                      {{i.text}}
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted">{{ i.date_now }}</small>
+                    <a style="color: black;" href="/blog/{{ i.id }}">
+                      <h5 class="card-title">{{ i.id }}  {{i.title}}</h5>
+                      <p class="card-text">
+                        {{i.text |truncatewords:15 }}
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">{{ i.date_now }}</small>
+                      </a>
                     </p>
                   </div>
                 </div>

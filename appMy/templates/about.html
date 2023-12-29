@@ -115,6 +115,108 @@
             aut necessitatibus unde, aspernatur facere odio asperiores omnis
             quisquam qui itaque similique accusamus cum officiis autem?
           </p>
+
+          <div class="row">
+            <h2>All</h2>     
+            <hr class="my-2">
+
+            
+            {% for i in blog_list %}
+            <div class="col-12">
+              <div class="card mb-3" style="height: 200px">
+                <div class="row g-0 h-100">
+                  <div class="col-md-4 h-100">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                      alt="Trendy Pants and Shoes"
+                      class="img-fluid rounded-start w-100 h-100"
+                      style="object-fit: cover"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ i.id }}  {{i.title}}</h5>
+                      <p class="card-text">
+                        {{i.text}}
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">{{ i.date_now }}</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+              
+
+
+          </div>
+
+          <div class="row">
+            <h2>Filter</h2>
+            <hr class="my-2">
+
+            
+            {% for i in blog_isactive %}
+            <div class="col-12">
+              <div class="card mb-3" style="height: 200px">
+                <div class="row g-0 h-100">
+                  <div class="col-md-4 h-100">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                      alt="Trendy Pants and Shoes"
+                      class="img-fluid rounded-start w-100 h-100"
+                      style="object-fit: cover"
+                    />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ i.id }}  {{i.title}}</h5>
+                      <p class="card-text">
+                        {{i.text}}
+                      </p>
+                      <p class="card-text">
+                        <small class="text-muted">{{ i.date_now }}</small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+              
+
+
+          </div>
+
+          <h2>Get</h2>
+          <div class="col-12">
+            <div class="card mb-3" style="height: 200px">
+              <div class="row g-0 h-100">
+                <div class="col-md-4 h-100">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                    alt="Trendy Pants and Shoes"
+                    class="img-fluid rounded-start w-100 h-100"
+                    style="object-fit: cover"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ blog2.id }}  {{blog2.title}}</h5>
+                    <p class="card-text">
+                      {{blog2.text}}
+                    </p>
+                    <p class="card-text">
+                      <small class="text-muted">{{ blog2.date_now }}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </main>

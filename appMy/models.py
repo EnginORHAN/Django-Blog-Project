@@ -12,4 +12,15 @@ class Blog(models.Model):
     text = models.TextField()
     date_now= models.DateTimeField(("Tarih - Saat"), auto_now=False, auto_now_add=False)
     author = models.CharField(("Yazar"), max_length=50)
+    # null değerler none değer gönderir
+    # default başlangıç değeri gönder
+    # blank=true doldurulması zorunlu değil
+    subtitle = models.CharField(("Alt Başlık"), max_length=50, default="",null=True,blank=True)
+    isactive = models.BooleanField(("Sayfada Göster"),default=False)
 
+
+class Contact(models.Model):
+    fullname=models.CharField(("Ad Soyad"), max_length=50)
+    title = models.CharField(("Konu"), max_length=50)
+    email = models.EmailField(("email"), max_length=254)
+    text = models.TextField(("İletişim Mesajı"))
