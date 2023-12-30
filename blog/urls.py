@@ -26,4 +26,5 @@ urlpatterns = [
     path("hakkimizda",aboutPage),
     path("iletisim",contactPage),
     path("blog/<bid>",detailPage),
+    path("deneme/<slug>",denemPage),
 ]

@@ -116,6 +116,14 @@
             quisquam qui itaque similique accusamus cum officiis autem?
           </p>
 
+          <div class="d-flex justify-content-evenly mx-5">
+            
+            {% for i in denemeler %}
+            <a href="/deneme/{{i.baslik}}">{{ i.baslik }}</a>
+            {% endfor %}
+              
+          </div>
+
           <div class="row">
             <h2>All</h2>     
             <hr class="my-2">

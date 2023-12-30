@@ -5,3 +5,5 @@ from appMy.models import *
 
 admin.site.register(Blog)
 admin.site.register(Contact)
+admin.site.register(Deneme)
+admin.site.register(Comment)
