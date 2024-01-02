@@ -9,10 +9,18 @@ def indexPage(request):
     }
     return render(request,"index.html",context)
 
-def categoryPage(request):
-    blog_list = Blog.objects.all()
+def categoryPage(request, slug=None):
+    
+    if slug:
+        blog_list = Blog.objects.filter(category__slug=slug)
+    else:
+        blog_list = Blog.objects.all()
+        
+    category_list = Category.objects.all()
+    
     context={
         "blog_list":blog_list,
+        "category_list":category_list,
     }
     return render(request,"category.html",context)
 

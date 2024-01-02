@@ -102,8 +102,18 @@
       <!-- BLOG -->
       <div class="container">
         <div class="row my-4">
-          <h2>Blog Yazıları</h2>
+          <h2>KATEGORİLER</h2>
           <hr />
+          <div class="d-flex justify-content-between mb-3">
+            
+            {% for i in category_list %}
+              
+              <a class="card p-2 shadow-3-strong " href="/kategori/{{ i.slug }}">{{ i.title }}</a>
+              
+            {% endfor %}
+              
+          </div>
+          <hr>
 
           
           {% for i in blog_list %}
@@ -114,7 +124,7 @@
                 <div class="col-md-4 h-100">
                   <a href="/blog/{{ i.id }}">
                     <img
-                      src="https://mdbcdn.b-cdn.net/wp-content/uploads/2020/06/vertical.webp"
+                      src="{{ i.image.url }}"
                       alt="Trendy Pants and Shoes"
                       class="img-fluid rounded-start w-100 h-100"
                       style="object-fit: cover"
