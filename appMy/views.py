@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from appMy.models import *
+from django.db.models import Q
 # Create your views here.
 
 def indexPage(request):
@@ -12,10 +13,17 @@ def indexPage(request):
 def categoryPage(request, slug=None):
     
     if slug:
-        blog_list = Blog.objects.filter(category__slug=slug)
+        blog_list = Blog.objects.filter(category__slug=slug).order_by("-id")
     else:
-        blog_list = Blog.objects.all()
-        
+        blog_list = Blog.objects.all().order_by("-id")
+    
+    query = request.GET.get("query")
+    if query:
+        blog_list = blog_list.filter(Q(title__icontains = query) |
+                                     Q(text__icontains = query) |
+                                     Q(author__icontains = query) |
+                                     Q(category__title__icontains = query ))
+
     category_list = Category.objects.all()
     
     context={

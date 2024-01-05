@@ -104,15 +104,25 @@
         <div class="row my-4">
           <h2>KATEGORİLER</h2>
           <hr />
-          <div class="d-flex justify-content-between mb-3">
+          <div class="col-9 d-flex justify-content-between mb-3">
             
             {% for i in category_list %}
               
               <a class="card p-2 shadow-3-strong " href="/kategori/{{ i.slug }}">{{ i.title }}</a>
               
             {% endfor %}
-              
           </div>
+          
+          <!-- search start -->
+
+          <div class="col">
+            <form method="GET" class="d-flex">
+              <input type="search" class="form-control" placeholder="Ara" name="query">
+              <button type="submit" class="btn btn-secondary btn-sm">Ara</button>
+            </form>
+          </div>
+
+          <!-- search end -->
           <hr>
 
           
