@@ -35,7 +35,7 @@ def categoryPage(request, slug=None):
 def aboutPage(request):
     blog_list = Blog.objects.all() #all liste mantığında çalışır [1.blog,2.blog,3.blog]
     blog_isactive = Blog.objects.filter(isactive=True) #[]liste mantığıyla çalışır buda
-    blog2 = Blog.objects.get(id=2) # tek eleman çekmek için kullanılır sadece 2.objeyi çeker eğer çekilen blog yoksa filter ve all hata döndurmez ama get döndürür.
+    blog2 = Blog.objects.get(id=4) # tek eleman çekmek için kullanılır sadece 2.objeyi çeker eğer çekilen blog yoksa filter ve all hata döndurmez ama get döndürür.
     denemeler=Deneme.objects.all()
 
     context={
