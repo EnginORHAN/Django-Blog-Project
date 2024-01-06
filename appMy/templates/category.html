@@ -69,7 +69,9 @@
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 class="card-title">{{ i.title }}</h5>
+                    <a href="/blog/{{ i.slug }}">
+                      <h5 class="card-title">{{ i.title }}</h5>
+                    </a>
                     <p class="card-text">
                       {{ i.text | truncatewords:15}}
                     </p>

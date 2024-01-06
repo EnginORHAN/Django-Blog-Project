@@ -6,6 +6,7 @@ from django.db.models import Q
 def indexPage(request):
     blog_list = Blog.objects.all()
     context={
+        "title":"Anasayfa",
         "blog_list":blog_list,
     }
     return render(request,"index.html",context)
@@ -27,6 +28,7 @@ def categoryPage(request, slug=None):
     category_list = Category.objects.all()
     
     context={
+         "title":"Kategori",
         "blog_list":blog_list,
         "category_list":category_list,
     }
@@ -39,6 +41,7 @@ def aboutPage(request):
     denemeler=Deneme.objects.all()
 
     context={
+         "title":"Hakkımızda",
         "blog_list":blog_list,
         "blog_isactive":blog_isactive,
         "blog2":blog2,
@@ -50,6 +53,7 @@ def aboutPage(request):
 def denemPage(request,slug):
     deneme=Deneme.objects.get(baslik=slug)
     context={
+         "title":"Deneme",
         "deneme":deneme,
     }
     return render(request,"deneme.html",context)
@@ -65,16 +69,19 @@ def contactPage(request):
         
         contact = Contact(fullname = fullname, title=title,email=email,text=text) #obje oluşturuldu değişkene gönderildi
         contact.save() #değişken SQL DATABASE kaydedildi
-    context={}
+    context={
+         "title":"İletişim",
+    }
     return render(request,"contact.html",context)
 
 def detailPage(request,bid):
     #kullanıcı yada frontend den bilgi almanın 2 yolu vardır
     #1- url adresi
     #2- formlardan
-    print(bid)
-    blog= Blog.objects.get(id=bid)
-    
+    if bid.isnumeric():
+        blog= Blog.objects.get(id=bid)  
+    else:
+        blog= Blog.objects.get(slug=bid)  
     comment_list=Comment.objects.filter(blog=blog)
     
     if request.method=="POST":
@@ -86,8 +93,20 @@ def detailPage(request,bid):
             comment.save()
     
     context={
+        "title":"Detay",
         "blog":blog,
         "comment_list":comment_list,
     }
     return render(request,"detail.html",context)
 
+
+#USER PAGE
+
+def loginPage(request):
+    context={}
+    return render(request,"user/login.html",context)
+
+
+def registerPage(request):
+    context={}
+    return render(request,"user/register.html",context)

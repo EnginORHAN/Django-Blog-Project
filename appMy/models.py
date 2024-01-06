@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.text import slugify
 # Create your models here.
 
 #model tablosu oluşturmak için 
@@ -26,8 +26,13 @@ class Blog(models.Model):
     # blank=true doldurulması zorunlu değil
     subtitle = models.CharField(("Alt Başlık"), max_length=50, default="",null=True,blank=True)
     isactive = models.BooleanField(("Sayfada Göster"),default=False)
+    slug = models.SlugField(("slug"),blank=True)
     def __str__(self):  #objeleeri isimlendirir
         return self.title
+    
+    def save(self):
+        self.slug = slugify( self.title)
+        super().save()
     
     
 class Comment(models.Model):
