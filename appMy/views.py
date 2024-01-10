@@ -3,6 +3,7 @@ from appMy.models import *
 from django.db.models import Q
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 # Create your views here.
 
 def indexPage(request):
@@ -71,6 +72,7 @@ def contactPage(request):
         
         contact = Contact(fullname = fullname, title=title,email=email,text=text) #obje oluşturuldu değişkene gönderildi
         contact.save() #değişken SQL DATABASE kaydedildi
+        return redirect("contactPage")
     context={
          "title":"İletişim",
     }
@@ -116,11 +118,30 @@ def loginPage(request):
             if user:
                 login(request, user)
             
-    
     context={}
     return render(request,"user/login.html",context)
 
 
 def registerPage(request):
+    
+    if request.method == "POST":
+        firstname = request.POST.get("firstname")
+        lastname = request.POST.get("lastname")
+        email = request.POST.get("email")
+        username = request.POST.get("username")
+        password1 = request.POST.get("password1")
+        password2 = request.POST.get("password2")
+        
+        if password1==password2:
+            if not User.objects.filter(username=username).exists():
+                if not User.objects.filter(email=email).exists(): #hiçbir email bulmaması gerekiyor
+                    user = User.objects.create_user(first_name=firstname,last_name=lastname,email=email,username=username,password=password1)
+                    user.save()
+                    
+                    
     context={}
     return render(request,"user/register.html",context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect("loginPage")

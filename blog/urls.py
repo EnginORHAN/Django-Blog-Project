@@ -23,14 +23,15 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",indexPage),
+    path("",indexPage,name="indexPage"),
     path("kategori",categoryPage),
     path("kategori/<slug>",categoryPage),
-    path("hakkimizda",aboutPage),
-    path("iletisim",contactPage),
+    path("hakkimizda/",aboutPage),
+    path("iletisim/",contactPage, name="contactPage"),
     path("blog/<bid>",detailPage),
     path("deneme/<slug>",denemPage),
     #USER URL
-    path("giris/",loginPage),
-    path("kaydol/",registerPage),
+    path("giris/",loginPage,name="loginPage"),
+    path("kaydol/",registerPage, name="registerPage"),
+    path("logout/",logoutUser, name="logoutUser"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

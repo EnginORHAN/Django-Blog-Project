@@ -60,7 +60,29 @@
               </li>
             </ul>
             <!-- Left links -->
-  
+            
+            
+            {% if request.user.is_authenticated %}
+            <div class="dropdown me-3">
+              <a
+                class="btn btn-primary dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-mdb-dropdown-init
+                data-mdb-ripple-init
+                aria-expanded="false"
+              >
+                {{ request.user.username }}
+              </a>
+            
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#">{{ request.user.get_full_name }}</a></li>
+                <li><a class="dropdown-item" href="#">{{ request.user.email }}</a></li>
+                <li><a class="dropdown-item" href="{% url 'logoutUser' %}">Çıkış Yap</a></li>
+              </ul>
+            </div>
+            {% else %}
             <div class="d-flex align-items-center">
               <a href="/giris"
                 data-mdb-ripple-init
@@ -77,6 +99,9 @@
               >
               Kayıt Ol
               </a>
+            
+            {% endif %}
+              
               <a
                 data-mdb-ripple-init
                 class="btn btn-dark px-3"
