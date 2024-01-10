@@ -31,6 +31,6 @@ urlpatterns = [
     path("blog/<bid>",detailPage),
     path("deneme/<slug>",denemPage),
     #USER URL
-    path("giris",loginPage),
-    path("kaydol",registerPage),
+    path("giris/",loginPage),
+    path("kaydol/",registerPage),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from appMy.models import *
 from django.db.models import Q
+from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.models import User
 # Create your views here.
 
 def indexPage(request):
@@ -103,6 +105,18 @@ def detailPage(request,bid):
 #USER PAGE
 
 def loginPage(request):
+    
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        if username and password:
+            
+            user = authenticate(username=username,password=password) # Kullanıcı bilgileri doğruysa kullanıcı adı verir yoksa none sonucu döndürür
+            if user:
+                login(request, user)
+            
+    
     context={}
     return render(request,"user/login.html",context)
 
